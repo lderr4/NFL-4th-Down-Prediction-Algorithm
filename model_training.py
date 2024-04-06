@@ -54,12 +54,13 @@ def objective(params):
     return {'loss': rmse, 'status': STATUS_OK}
 
 def train_regression_models(years):
+    
     dataset = get_dataset(years)
     dataset = partition_dataset_by_play_type(dataset)
     model_features = {}
     model_paths = {"run": run_path, 
                    "pass" : pass_path, 
-                   "field_goal": fg_path, 
+                   "fg": fg_path, 
                    "punt": punt_path}
 
     for name, play_data in dataset: 
@@ -76,7 +77,7 @@ def train_regression_models(years):
         
         cols = feature_selection(xg, X_train, y_train, is_reg=True)
         model_features[name] = cols
-        print(f"Number of Features: {len(cols)}\n{cols}")
+        print(f"Number of Features: {len(cols)}")
         
         X_train_sel = X_train[cols]
         param_space_regressors['X_train'] = X_train_sel
@@ -114,7 +115,7 @@ def train_classifier_model(years):
     dt = DecisionTreeClassifier(random_state=42)
     cols = feature_selection(dt, X_train, y_train, is_reg=False)
     X_train = X_train[cols]
-    
+    print("Features Calculated.")
     grid_search = GridSearchCV(estimator=dt, param_grid=param_grid_decision_tree, cv=5, n_jobs=-1, verbose=1, scoring='accuracy')
 
     grid_search.fit(X_train, y_train)

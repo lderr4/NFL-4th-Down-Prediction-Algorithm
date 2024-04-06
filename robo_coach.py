@@ -3,7 +3,7 @@ import xgboost as xgb
 from sklearn.model_selection import train_test_split
 from model_training import train_classifier_model, train_regression_models
 from preprocessing import get_dataset, prep_for_classifier
-from constants import classifier_path, run_path, pass_path, fg_path, punt_path
+from constants import classifier_path, run_path, pass_path, fg_path, punt_path, robo_coach_path
 import pickle
 import os
 
@@ -69,6 +69,8 @@ class robo_coach():
         self.run_columns = regressor_cols['run']
         
         self.load_models()
+        self.save_to_file(robo_coach_path)
+        print(f"Robo Coach object saved to {robo_coach_path}")
 
     
     def get_classifier_predict_proba(self, X):
@@ -87,7 +89,6 @@ class robo_coach():
         return df
     
     def predict(self, X):
-        
         def get_wpa_prediction(row, idx_to_possible_plays):
             suffix = '_wpa_pred'
             idx = row.name
@@ -139,11 +140,24 @@ class robo_coach():
         
         return final_preds_list
             
+
+
+    def save_to_file(self, filename):
+        with open(filename, 'wb') as f:
+            pickle.dump(self, f)
+
+    @classmethod
+    def load_from_file(cls, filename):
+        with open(filename, 'rb') as f:
+            obj = pickle.load(f)
+        return obj
         
         
 def main():
+    outfile = "robo_coach.pkl"
     rb = robo_coach()
-    rb.load_models()
+    rb.train_models()
+    rb.save_to_file(outfile)
     dataset = get_dataset(rb.years)
     dataset = prep_for_classifier(dataset)
     print(dataset.columns)

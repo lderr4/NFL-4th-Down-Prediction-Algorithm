@@ -1,30 +1,5 @@
 from hyperopt import hp
 
-fg_columns = ['year', 'yardline_100', 'half_seconds_remaining',
-       'game_seconds_remaining', 'drive', 'ydstogo', 'ydsnet',
-       'defteam_timeouts_remaining', 'score_differential', 'no_score_prob',
-       'fg_prob', 'drive_play_count', 'spread_line', 'posteam_is_home',
-       'wp_avg', 'wp_difference', 'posteam_pass_epa_per_sec']
-        
-pass_columns = ['yardline_100', 'game_seconds_remaining', 'drive', 'ydstogo', 'ydsnet',
-       'score_differential', 'no_score_prob', 'drive_play_count',
-       'posteam_is_home', 'posteam_spread_line', 'wp_avg', 'wp_difference',
-       'posteam_pass_epa_per_sec']
-        
-run_columns = ['year', 'week', 'yardline_100', 'half_seconds_remaining',
-       'game_seconds_remaining', 'drive', 'ydstogo', 'ydsnet',
-       'posteam_timeouts_remaining', 'defteam_timeouts_remaining',
-       'score_differential', 'no_score_prob', 'fg_prob', 'ep',
-       'drive_play_count', 'spread_line', 'posteam_is_home',
-       'posteam_spread_line', 'wp_avg', 'wp_difference',
-       'posteam_rush_epa_per_sec', 'posteam_pass_epa_per_sec']
-        
-punt_columns = ['yardline_100', 'half_seconds_remaining', 'game_seconds_remaining',
-       'drive', 'ydstogo', 'posteam_timeouts_remaining',
-       'defteam_timeouts_remaining', 'score_differential', 'no_score_prob',
-       'fg_prob', 'td_prob', 'spread_line', 'posteam_is_home', 'wp_avg',
-       'wp_difference', 'posteam_pass_epa_per_sec']
-
 keep_cols = [
     'home_team', 
     'season_type',
@@ -128,3 +103,4 @@ pass_path = 'models/pass_model.model'
 fg_path = 'models/fg_model.model'
 punt_path = 'models/punt_model.model'
 classifier_path = 'models/play_type_classifier.pkl'
+robo_coach_path = 'models.robo_coach.pkl'
