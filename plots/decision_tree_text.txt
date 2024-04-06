@@ -1,0 +1,145 @@
+|--- fg_prob <= 0.30
+|   |--- drive_play_count <= 3.50
+|   |   |--- class: punt
+|   |--- drive_play_count >  3.50
+|   |   |--- ydstogo <= 2.50
+|   |   |   |--- drive_play_count <= 6.50
+|   |   |   |   |--- ydsnet <= 17.50
+|   |   |   |   |   |--- class: run
+|   |   |   |   |--- ydsnet >  17.50
+|   |   |   |   |   |--- wp_avg <= 0.16
+|   |   |   |   |   |   |--- class: pass
+|   |   |   |   |   |--- wp_avg >  0.16
+|   |   |   |   |   |   |--- ep <= 0.26
+|   |   |   |   |   |   |   |--- half_seconds_remaining <= 8.50
+|   |   |   |   |   |   |   |   |--- class: pass
+|   |   |   |   |   |   |   |--- half_seconds_remaining >  8.50
+|   |   |   |   |   |   |   |   |--- class: punt
+|   |   |   |   |   |   |--- ep >  0.26
+|   |   |   |   |   |   |   |--- class: punt
+|   |   |   |--- drive_play_count >  6.50
+|   |   |   |   |--- ydstogo <= 1.50
+|   |   |   |   |   |--- ydsnet <= 43.50
+|   |   |   |   |   |   |--- class: run
+|   |   |   |   |   |--- ydsnet >  43.50
+|   |   |   |   |   |   |--- class: run
+|   |   |   |   |--- ydstogo >  1.50
+|   |   |   |   |   |--- drive_play_count <= 8.50
+|   |   |   |   |   |   |--- class: pass
+|   |   |   |   |   |--- drive_play_count >  8.50
+|   |   |   |   |   |   |--- class: pass
+|   |   |--- ydstogo >  2.50
+|   |   |   |--- wp_avg <= 0.06
+|   |   |   |   |--- game_seconds_remaining <= 506.50
+|   |   |   |   |   |--- half_seconds_remaining <= 269.50
+|   |   |   |   |   |   |--- class: pass
+|   |   |   |   |   |--- half_seconds_remaining >  269.50
+|   |   |   |   |   |   |--- ydstogo <= 17.50
+|   |   |   |   |   |   |   |--- class: pass
+|   |   |   |   |   |   |--- ydstogo >  17.50
+|   |   |   |   |   |   |   |--- class: punt
+|   |   |   |   |--- game_seconds_remaining >  506.50
+|   |   |   |   |   |--- ydsnet <= 32.50
+|   |   |   |   |   |   |--- yardline_100 <= 52.50
+|   |   |   |   |   |   |   |--- class: punt
+|   |   |   |   |   |   |--- yardline_100 >  52.50
+|   |   |   |   |   |   |   |--- class: punt
+|   |   |   |   |   |--- ydsnet >  32.50
+|   |   |   |   |   |   |--- class: pass
+|   |   |   |--- wp_avg >  0.06
+|   |   |   |   |--- ydsnet <= 49.50
+|   |   |   |   |   |--- ep <= -0.14
+|   |   |   |   |   |   |--- game_seconds_remaining <= 185.50
+|   |   |   |   |   |   |   |--- wp_avg <= 0.27
+|   |   |   |   |   |   |   |   |--- class: pass
+|   |   |   |   |   |   |   |--- wp_avg >  0.27
+|   |   |   |   |   |   |   |   |--- class: punt
+|   |   |   |   |   |   |--- game_seconds_remaining >  185.50
+|   |   |   |   |   |   |   |--- ydsnet <= -6.50
+|   |   |   |   |   |   |   |   |--- class: punt
+|   |   |   |   |   |   |   |--- ydsnet >  -6.50
+|   |   |   |   |   |   |   |   |--- ydstogo <= 8.50
+|   |   |   |   |   |   |   |   |   |--- drive_play_count <= 6.50
+|   |   |   |   |   |   |   |   |   |   |--- class: punt
+|   |   |   |   |   |   |   |   |   |--- drive_play_count >  6.50
+|   |   |   |   |   |   |   |   |   |   |--- class: punt
+|   |   |   |   |   |   |   |   |--- ydstogo >  8.50
+|   |   |   |   |   |   |   |   |   |--- class: punt
+|   |   |   |   |   |--- ep >  -0.14
+|   |   |   |   |   |   |--- ep <= 0.43
+|   |   |   |   |   |   |   |--- half_seconds_remaining <= 8.50
+|   |   |   |   |   |   |   |   |--- class: pass
+|   |   |   |   |   |   |   |--- half_seconds_remaining >  8.50
+|   |   |   |   |   |   |   |   |--- wp_avg <= 0.30
+|   |   |   |   |   |   |   |   |   |--- game_seconds_remaining <= 221.50
+|   |   |   |   |   |   |   |   |   |   |--- class: pass
+|   |   |   |   |   |   |   |   |   |--- game_seconds_remaining >  221.50
+|   |   |   |   |   |   |   |   |   |   |--- ydstogo <= 9.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |   |--- ydstogo >  9.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: punt
+|   |   |   |   |   |   |   |   |--- wp_avg >  0.30
+|   |   |   |   |   |   |   |   |   |--- class: punt
+|   |   |   |   |   |   |--- ep >  0.43
+|   |   |   |   |   |   |   |--- fg_prob <= 0.21
+|   |   |   |   |   |   |   |   |--- class: punt
+|   |   |   |   |   |   |   |--- fg_prob >  0.21
+|   |   |   |   |   |   |   |   |--- class: pass
+|   |   |   |   |--- ydsnet >  49.50
+|   |   |   |   |   |--- ydsnet <= 59.50
+|   |   |   |   |   |   |--- class: pass
+|   |   |   |   |   |--- ydsnet >  59.50
+|   |   |   |   |   |   |--- class: pass
+|--- fg_prob >  0.30
+|   |--- td_prob <= 0.07
+|   |   |--- wp_avg <= 0.07
+|   |   |   |--- td_prob <= 0.04
+|   |   |   |   |--- game_seconds_remaining <= 69.50
+|   |   |   |   |   |--- class: field_goal
+|   |   |   |   |--- game_seconds_remaining >  69.50
+|   |   |   |   |   |--- class: field_goal
+|   |   |   |--- td_prob >  0.04
+|   |   |   |   |--- ep <= 2.22
+|   |   |   |   |   |--- game_seconds_remaining <= 248.00
+|   |   |   |   |   |   |--- class: pass
+|   |   |   |   |   |--- game_seconds_remaining >  248.00
+|   |   |   |   |   |   |--- class: field_goal
+|   |   |   |   |--- ep >  2.22
+|   |   |   |   |   |--- class: pass
+|   |   |--- wp_avg >  0.07
+|   |   |   |--- td_prob <= 0.05
+|   |   |   |   |--- game_seconds_remaining <= 121.00
+|   |   |   |   |   |--- td_prob <= 0.02
+|   |   |   |   |   |   |--- class: field_goal
+|   |   |   |   |   |--- td_prob >  0.02
+|   |   |   |   |   |   |--- class: pass
+|   |   |   |   |--- game_seconds_remaining >  121.00
+|   |   |   |   |   |--- class: field_goal
+|   |   |   |--- td_prob >  0.05
+|   |   |   |   |--- yardline_100 <= 24.50
+|   |   |   |   |   |--- class: pass
+|   |   |   |   |--- yardline_100 >  24.50
+|   |   |   |   |   |--- half_seconds_remaining <= 312.50
+|   |   |   |   |   |   |--- class: run
+|   |   |   |   |   |--- half_seconds_remaining >  312.50
+|   |   |   |   |   |   |--- class: field_goal
+|   |--- td_prob >  0.07
+|   |   |--- ydstogo <= 1.50
+|   |   |   |--- class: run
+|   |   |--- ydstogo >  1.50
+|   |   |   |--- ep <= 1.10
+|   |   |   |   |--- td_prob <= 0.10
+|   |   |   |   |   |--- class: field_goal
+|   |   |   |   |--- td_prob >  0.10
+|   |   |   |   |   |--- class: pass
+|   |   |   |--- ep >  1.10
+|   |   |   |   |--- ep <= 1.72
+|   |   |   |   |   |--- td_prob <= 0.09
+|   |   |   |   |   |   |--- class: field_goal
+|   |   |   |   |   |--- td_prob >  0.09
+|   |   |   |   |   |   |--- class: pass
+|   |   |   |   |--- ep >  1.72
+|   |   |   |   |   |--- wp_avg <= 0.46
+|   |   |   |   |   |   |--- class: pass
+|   |   |   |   |   |--- wp_avg >  0.46
+|   |   |   |   |   |   |--- class: pass

@@ -1,0 +1,7 @@
+hyperopt
+numpy
+pandas
+scikit-learn
+xgboost
+nfl_data_py
+matplotlib
