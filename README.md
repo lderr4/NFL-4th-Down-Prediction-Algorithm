@@ -28,7 +28,7 @@ python3 robo_coach.py
 - Cleaning up messy Jupyter Notebook code into usable Python Modules
 - Visual evaluation metrics are often more informative than scores
 
-## Challenges
+## Challenges/Shortcomings
 - Coming up with the approach to the question: What is the optimal 4th Down Play?
 - Going from ~300 features in the raw dataset to ~30
 - Poor Performance of Regression Models
