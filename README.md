@@ -1,7 +1,9 @@
 # Robo-NFL-Coach
   
 ## Description   
-This project combines classification and regression tasks to determine whether a team should run, pass, punt, or kick a field goal on 4th down, emulating the duties of an NFL coach.
+This project combines classification and regression tasks to determine whether a team should run, pass, punt, or kick a field goal on 4th down, emulating the duties of an NFL coach. 
+
+[Python Libraries Used](https://github.com/lderr4/Robo-NFL-Coach/blob/main/requirements.txt)
 
 ## How to run   
 ```bash
@@ -19,6 +21,18 @@ pip install -r requirements.txt
 # Run the Training Script (which saves the Models, Dataset, and Class):
 python3 robo_coach.py
 ```
+## Things I Learned
+- Importance of feature engineering and preprocessing
+- Recursive Feature Elimination and Bayesian Optimization
+- Cleaning up messy Jupyter Notebook code into usable Python Modules
+- Visual evaluation metrics are often more informative than scores
+
+## Challenges
+- Coming up with the approach to the question: What is the optimal 4th Down Play?
+- Going from ~300 features in the raw dataset to ~30
+- Poor Performance of Regression Models
+- Evaluating the entire system (as apposed to each of its components separately)
+
 ## Flowcharts
 ### Model Training Flowchart
 ![Model Training Flowchart Image](https://github.com/lderr4/Robo-NFL-Coach/blob/main/Model-Training-Data-Flow.png)
