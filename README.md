@@ -54,8 +54,55 @@ Feature correlation was one of the feature selection techniques used in this pro
 ![Proportion of 4th Down Plays with a Play Exceeding Probability Threshold](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/percent_exceeding_threshold.png)
 Notice the proportion of passing plays shooting up at about the 1% mark. This indicates lots of 4th down plays have ~1% probability of being a passing play. This is because of fake punts and trick plays which happen in typical punt or field goal situations.
 
-### Regressors
-#### Run Regressor Metrics (Test)
+### 3. Regressors
+#### 3.1 Run Regressor Metrics (Test)
+| Metric | Score |
+|------------|---------|
+| $R^2$     |  0.525    | 
+| _MSE_     |  0.00143  |
+| _MAE_     |  0.0257  |
+| _Correct Sign (+/-) %_        |      0.882     |
+
+#### 3.2 Run Regressor Plots
+![Run Regressor Plots](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/run_plots.png)
+
+#### 3.3 Pass Regressor Metrics (Test)
+| Metric | Score |
+|------------|---------|
+| $R^2$     |  0.392    | 
+| _MSE_     |  0.00275  |
+| _MAE_     |  0.0266  |
+| _Correct Sign (+/-) %_        |      0.865     |
+
+#### 3.4 Pass Regressor Plots
+![Pass Regressor Plots](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/pass_plots.png)
+
+
+#### 3.5 Field Goal Regressor Metrics (Test)
+| Metric | Score |
+|------------|---------|
+| $R^2$     |  -0.0573    | 
+| MSE     |  0.00291  |
+| MAE     |  0.0247  |
+| Correct Sign (+/-) %        |      0.766     |
+
+**Note**: Despite my best efforts, the field goal model still has a negative $R^2$, meaning simply predicting the mean would yield a lower $MSE$. This is because the outcome of a field goal is incredibly hard to predict, and is essentially random. 
+
+#### 3.6 Field Regressor Plots
+![Run Regressor Plots](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/fg_plots.png)
+
+
+#### 3.7 Punt Regressor Metrics (Test)
+| Metric | Score |
+|------------|---------|
+| $R^2$     |  0.339    | 
+| _MSE_     |  0.000908  |
+| _MAE_     |  0.0151  |
+| _Correct Sign (+/-) %_        |      0.742     |
+
+#### 3.8 Punt Regressor Plots
+![Run Regressor Plots](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/punt_plots.png)
+
 
 
 
