@@ -33,7 +33,7 @@ This diagram depicts the flow of data from the initial API request to the final 
 ### Predict Function Flowchart
 ![Predict Function Flowchart Image](https://github.com/lderr4/Robo-NFL-Coach/blob/main/Robot-Coach-Predict-Function.png)
 
-This diagram show the decision flow chart for the predict function of the robo coach class. The classifier's _predict_proba_ function is used to determine the degree of certainty of the prediction. If the probability of the highest play is above the max probability threshold parameter, the classifier will be used for the prediction. Otherwise, for each play probability that is greater than the minimum probability threshold parameter, the corresponding regression model is used to predict Win Probability Added. The play with the highest Win Probability Added is chosen. 
+This diagram illustrates the decision flow chart for the predict function of the robo coach class. The classifier's _predict_proba_ function is used to determine the degree of certainty of the prediction. If the probability of the highest play is above the max probability threshold parameter, the classifier will be used for the prediction. Otherwise, for each play probability that is greater than the minimum probability threshold parameter, the corresponding regression model is used to predict Win Probability Added. The play with the highest Win Probability Added is chosen. 
 
 ## Metrics and Plots
 ### 1. Features
