@@ -22,6 +22,7 @@ pip install -r requirements.txt
 python3 robo_coach.py
 ```
 ## Things I Learned
+- Nailing down the correct approach to a problem (before writing any code) is the key to avoiding time waste
 - Importance of feature engineering and preprocessing
 - Recursive Feature Elimination and Bayesian Optimization
 - Cleaning up messy Jupyter Notebook code into usable Python Modules
