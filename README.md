@@ -1,8 +1,7 @@
 # Robo-NFL-Coach
-Using data science and machine learning to automate the duties of an NFL Coach!
   
 ## Description   
-This project combines classification and regression tasks to determine whether a team should run, pass, punt, or kick a field goal on 4th down.
+This project combines classification and regression tasks to determine whether a team should run, pass, punt, or kick a field goal on 4th down, emulating the duties of an NFL coach.
 
 ## How to run   
 ```bash
