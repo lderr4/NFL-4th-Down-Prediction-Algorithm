@@ -56,7 +56,7 @@ This diagram illustrates the decision flow chart for the predict function of the
 ![Correlation Heatmap](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/corr_heatmap.png)
 Feature correlation was one of the feature selection techniques used in this project.
 
-#### 1.2 Feature vs Win Probability Added Scatterplots
+#### 1.2 Feature vs Win Probability Added (wpa) Scatterplots
 ![Correlation Heatmap](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/features_vs_wpa.png)
 
 ### 2. Classifier
