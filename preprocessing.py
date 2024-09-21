@@ -93,5 +93,5 @@ def prep_for_classifier(dataset):
     dataset = dataset.dropna(subset=['play_type'])
     dataset.drop(dataset[dataset['play_type'] == 'no_play'].index, inplace=True)
     dataset.drop(dataset[dataset['play_type'] == 'qb_kneel'].index, inplace=True)
-    dataset = dataset.drop('wpa_avg', axis=1)
+    # dataset = dataset.drop('wpa_avg', axis=1)
     return dataset
