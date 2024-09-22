@@ -120,13 +120,11 @@ Notice the proportion of passing plays shooting up at about the 1% mark. This in
 
 ## Results
 
-![https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/classifier_usage.png]
+![Classifier Usage Heat Map Plot](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/classifier_usage.png)
 
-![https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/model_acc_heat.png]
+![Model Accuracy Heat Map Plot](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/model_acc_heat.png)
 
-![https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/reg_acc_heat.png]
-
-![https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/wrong_preds_heat.png]
+![Wrong Predictions Heat Map Plot](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/wrong_preds_heat.png)
 
 
 
