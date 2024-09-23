@@ -5,6 +5,12 @@ This project combines classification and regression tasks to determine whether a
 
 [Python Libraries Used](https://github.com/lderr4/Robo-NFL-Coach/blob/main/requirements.txt)
 
+## Dataset
+All models are trained on the play-by-play dataset provided by the [nfl-data-py API](https://pypi.org/project/nfl-data-py/). 
+
+## How it Works
+This project combines 5 models: a classifier and 4 regressors. The classifier is a decision tree which can accurately assess situations as run, pass, field goal, or punt with 95% accuracy. This model is used for trivial decisions in which the right play is obvious. Less obvious plays are run through each of the relevent regression models to output a predicted win probability added (wpa). The model with the highest predicted wpa is the play that is used in the prediction. 
+
 ## How to run   
 ```bash
 # clone project   
@@ -21,19 +27,9 @@ pip install -r requirements.txt
 # Run the Training Script (which saves the Models, Dataset, and Class):
 python3 robo_coach.py
 ```
-## Things I Learned
-- Nailing down the correct approach to a problem (before writing any code) is the key to avoiding time waste
-- Importance of feature engineering and preprocessing
-- Recursive Feature Elimination and Bayesian Optimization
-- Cleaning up messy Jupyter Notebook code into usable Python Modules
-- Visual evaluation metrics are often more informative than scores
-
-## Challenges/Shortcomings
-- Coming up with the approach to the question: What is the optimal 4th Down Play?
-- Going from ~300 features in the raw dataset to ~30
-- Poor Performance of Regression Models
 
 ## Flowcharts
+This section will give a deep dive into the technicalities of the project.
 ### Model Training Flowchart
 ![Model Training Flowchart Image](https://github.com/lderr4/Robo-NFL-Coach/blob/main/Model-Training-Data-Flow.png)
 
@@ -119,17 +115,10 @@ Notice the proportion of passing plays shooting up at about the 1% mark. This in
 ![Run Regressor Plots](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/punt_plots.png)
 
 ## Results
-
-![Classifier Usage Heat Map Plot](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/classifier_usage.png)
+This section will detail my analysis on the performance of the project.
 
 ![Model Accuracy Heat Map Plot](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/model_acc_heat.png)
+This heat plot compares the model's predictions with the actual NFL plays. As the maximum threshold decreases, the usage of the classifier (instead of the wpa regressors) increases, increasing the accuracy. Additionally, the minimum threshold parameter increases the accuracy of the regressors by eliminating plays which do not exceed it.
 
 ![Wrong Predictions Heat Map Plot](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/wrong_preds_heat.png)
-
-
-
-
-
-
-
-
+This plot compares the entire model's (minimum threshold=0.1; maximum threshold=0.9) predictions with the actual in-game play on the test set. As could be expected, the most errors come when deciding between run and pass. Interestingly, this model slightly preferred punting over NFL teams, and preferred passing over running.
