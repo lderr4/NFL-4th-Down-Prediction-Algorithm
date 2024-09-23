@@ -32,7 +32,6 @@ python3 robo_coach.py
 - Coming up with the approach to the question: What is the optimal 4th Down Play?
 - Going from ~300 features in the raw dataset to ~30
 - Poor Performance of Regression Models
-- Evaluating the entire system (as apposed to each of its components separately)
 
 ## Flowcharts
 ### Model Training Flowchart
@@ -118,6 +117,14 @@ Notice the proportion of passing plays shooting up at about the 1% mark. This in
 
 #### 3.8 Punt Regressor Plots
 ![Run Regressor Plots](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/punt_plots.png)
+
+## Results
+
+![Classifier Usage Heat Map Plot](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/classifier_usage.png)
+
+![Model Accuracy Heat Map Plot](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/model_acc_heat.png)
+
+![Wrong Predictions Heat Map Plot](https://github.com/lderr4/Robo-NFL-Coach/blob/main/plots/wrong_preds_heat.png)
 
 
 
