@@ -1,4 +1,4 @@
-# Robo-NFL-Coach
+# NFL-4th-Down-Prediction-Algorithm
   
 ## Description   
 This project combines classification and regression tasks to determine whether a team should run, pass, punt, or kick a field goal on 4th down, emulating the duties of an NFL coach. 
