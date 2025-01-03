@@ -1,5 +1,5 @@
 import pandas as pd
-from constants import keep_cols, drop_cols, dataset_csv_path
+from src.model.constants import keep_cols, drop_cols, dataset_csv_path
 import nfl_data_py as nfl
 import os
 

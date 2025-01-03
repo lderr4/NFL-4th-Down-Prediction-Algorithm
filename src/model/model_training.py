@@ -3,8 +3,8 @@ from sklearn.model_selection import train_test_split, cross_val_score, KFold, St
 from sklearn.tree import DecisionTreeClassifier
 from hyperopt import fmin, tpe, STATUS_OK, Trials
 import xgboost as xgb
-from preprocessing import get_dataset, partition_dataset_by_play_type, prep_for_classifier
-from constants import param_space_regressors, param_grid_decision_tree, classifier_path, run_path, pass_path, fg_path, punt_path
+from src.model.preprocessing import get_dataset, partition_dataset_by_play_type, prep_for_classifier
+from src.model.constants import param_space_regressors, param_grid_decision_tree, classifier_path, run_path, pass_path, fg_path, punt_path
 import numpy as np
 import pickle
 

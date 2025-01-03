@@ -1,9 +1,9 @@
 import numpy as np
 import xgboost as xgb
 from sklearn.model_selection import train_test_split
-from model_training import train_classifier_model, train_regression_models
-from preprocessing import get_dataset, prep_for_classifier
-from constants import classifier_path, run_path, pass_path, fg_path, punt_path, robo_coach_path
+from src.model.model_training import train_classifier_model, train_regression_models
+from src.model.preprocessing import get_dataset, prep_for_classifier
+from src.model.constants import classifier_path, run_path, pass_path, fg_path, punt_path, robo_coach_path
 import pickle
 import os
 from pandas import to_numeric
