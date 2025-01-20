@@ -1,22 +1,20 @@
 import numpy as np
 import xgboost as xgb
 from sklearn.model_selection import train_test_split
-from src.model.model_training import train_classifier_model, train_regression_models
-from src.model.preprocessing import get_dataset, prep_for_classifier
-from src.model.constants import classifier_path, run_path, pass_path, fg_path, punt_path, robo_coach_path
+from model_training import train_classifier_model, train_regression_models
+from preprocessing import get_dataset, prep_for_classifier
+from constants import classifier_path, run_path, pass_path, fg_path, punt_path, robo_coach_path, years
 import pickle
 import os
 from pandas import to_numeric
-
 
 class robo_coach():
     
     def __init__(self, 
                  classifier_min_threshold = 0,
                  classifier_max_threshold=0.99,
-                 years=[2023, 2022, 2021, 2020, 2019,2018]):
+                 years = years):
         
-
         # minimum probability predicted for a play to be used in one of the regressors
         self.classifier_min_threshold = classifier_min_threshold
         
@@ -43,7 +41,13 @@ class robo_coach():
             else:
                 print(f"Warning: {self} has no attribute '{attr}'")
 
-
+    def load(self):
+        rb = None
+        with open(robo_coach_path, 'rb') as f:
+            rb = pickle.load(f)
+        
+        self.__dict__.update(rb.__dict__)
+        
     def load_models(self):
         
         run_model = xgb.Booster()
@@ -77,8 +81,9 @@ class robo_coach():
         }
     
     def train_models(self):
-        self.classifier_columns = train_classifier_model(self.years)
-        regressor_cols = train_regression_models(self.years)
+        train, test = get_dataset(years)
+        self.classifier_columns = train_classifier_model(train)
+        regressor_cols = train_regression_models(train)
      
         self.fg_columns = regressor_cols['fg']
         self.pass_columns = regressor_cols['pass']
@@ -89,11 +94,22 @@ class robo_coach():
         self.save_to_file(robo_coach_path)
         print(f"Robo Coach object saved to {robo_coach_path}")
 
-    
+
+    def get_wpa_pred(self, X, play_type):
+        self.models[play_type]
+        model, cols = self.models[play_type]
+        dmat = xgb.DMatrix(data=X[cols])
+        preds = model.predict(dmat)
+        return preds
+
     def get_classifier_predict_proba(self, X):
         
         X = X[self.classifier_columns]
-        return self.classifier.predict_proba(X)
+        if X.ndim == 1:
+            X = X.values.reshape(1,-1)
+        else:
+            X = X.values
+        return self.classifier.predict_proba(X), self.classifier.classes_
     
     def predict_wpa(self, df):
         # takes in a df slice with plays that are within the threshold
@@ -127,15 +143,12 @@ class robo_coach():
 
         classes = self.classifier.classes_
         
-        
         # true / false array with true values representing plays where one or more play probs are above the maximum threshold
         threshold_exceeded = np.any((predict_proba > self.classifier_max_threshold), axis=1)
-
 
         # inverse of threshold exceeded array
         threshold_not_exceeded = ~threshold_exceeded
         
-
         # indices where threshold is not exceeded; [0] because np.where is weird 
         classifier_preds = np.where(threshold_exceeded)[0] 
         
@@ -149,8 +162,6 @@ class robo_coach():
         idx_to_possible_plays = {i: [c for c in classes[np.where(predict_proba[i] > self.classifier_min_threshold)[0]]] for i in regressor_preds}
 
         
-
-
         # get the dataframe with the respective idx values for regression prediction
         X_uncertain = X.iloc[regressor_preds,]
         
@@ -173,17 +184,10 @@ class robo_coach():
         
         return final_preds_list
             
-
-
     def save_to_file(self, filename):
         with open(filename, 'wb') as f:
             pickle.dump(self, f)
 
-    @classmethod
-    def load_from_file(cls, filename):
-        with open(filename, 'rb') as f:
-            obj = pickle.load(f)
-        return obj
     
        
 def main():
@@ -197,7 +201,7 @@ def main():
     y = dataset[['play_type', 'wpa_avg']]
     X = dataset.drop('play_type', axis=1)
     X = dataset.drop('wpa_avg', axis=1)
-    _, X_test, _, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    _, X_test, _, y_test = train_test_split(X, y, test_size=0.2, random_state=random_state)
     
     X_test.to_csv("results/X_test.csv")
     y_test.to_csv("results/y_test.csv")
@@ -221,9 +225,6 @@ def main():
     #             pickle.dump(preds, f)
             
     
-
-
-
 
 if __name__ == "__main__":
     main()   

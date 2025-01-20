@@ -4,7 +4,27 @@ services:
   nfl-model:
     build:
       context: ./containers/nfl-model/
+    # command: uvicorn backend:app --host 0.0.0.0 --port 8000 --reload
+    working_dir: /app
     restart: on-failure
     container_name: nfl-model
+    environment:
+    - PYTHONUNBUFFERED=1
+
+    ports:
+      - 8000:8000
     volumes:
        - ./src/nfl-model/:/app/
+    
+
+
+  streamlit:
+    build:
+      context: ./containers/streamlit
+    restart: on-failure
+    container_name: streamlit
+    volumes: 
+       - ./src/streamlit:/app/
+    ports: 
+      - 8501:8501
+    

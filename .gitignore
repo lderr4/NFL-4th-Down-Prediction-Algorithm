@@ -133,3 +133,4 @@ data
 env_name
 results
 models.robo_coach.pkl
+raw_full.csv

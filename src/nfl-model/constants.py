@@ -1,5 +1,11 @@
 from hyperopt import hp
 
+random_state = 42
+
+test_size = 0.2
+
+years=[2023, 2022, 2021, 2020, 2019,2018, 2017,2016,2015,2014, 2013,2012,2011,2010]
+
 keep_cols = [
     'home_team', 
     'season_type',
@@ -44,8 +50,7 @@ keep_cols = [
     'total_away_pass_epa',
 ]
 
-drop_cols=[
-                 'home_team', 
+drop_cols=[      'home_team', 
                  'season_type',  
                  'total_home_epa',
                  'total_away_epa', 
@@ -74,6 +79,7 @@ drop_cols=[
                  'posteam_total_rush_epa',
                  'posteam_total_pass_epa',
                  'posteam_epa_per_sec',
+                 'spread_line'
  
                   ]
 

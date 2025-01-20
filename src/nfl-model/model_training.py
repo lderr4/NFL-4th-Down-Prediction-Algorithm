@@ -3,11 +3,10 @@ from sklearn.model_selection import train_test_split, cross_val_score, KFold, St
 from sklearn.tree import DecisionTreeClassifier
 from hyperopt import fmin, tpe, STATUS_OK, Trials
 import xgboost as xgb
-from src.model.preprocessing import get_dataset, partition_dataset_by_play_type, prep_for_classifier
-from src.model.constants import param_space_regressors, param_grid_decision_tree, classifier_path, run_path, pass_path, fg_path, punt_path
+from preprocessing import get_dataset, partition_dataset_by_play_type, prep_for_classifier
+from constants import param_space_regressors, param_grid_decision_tree, classifier_path, run_path, pass_path, fg_path, punt_path
 import numpy as np
 import pickle
-
 
 def feature_selection(base_model , X_train_full, y_train,is_reg):
     if is_reg:
@@ -53,9 +52,8 @@ def objective(params):
     
     return {'loss': rmse, 'status': STATUS_OK}
 
-def train_regression_models(years):
+def train_regression_models(dataset):
     
-    dataset = get_dataset(years)
     dataset = partition_dataset_by_play_type(dataset)
     model_features = {}
     model_paths = {"run": run_path, 
@@ -102,14 +100,14 @@ def train_regression_models(years):
 
     return model_features
 
-
-def train_classifier_model(years):
+def train_classifier_model(dataset):
     
-    dataset = get_dataset(years)
     dataset = prep_for_classifier(dataset)
+
     y = dataset['play_type']
     X = dataset.drop('play_type', axis=1)
     X_train, _, y_train, _ = train_test_split(X, y, test_size=0.2, random_state=42)
+    
     
     print("Calculating optimal features for Classifier...")
     dt = DecisionTreeClassifier(random_state=42)

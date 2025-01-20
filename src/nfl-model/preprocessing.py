@@ -1,11 +1,29 @@
 import pandas as pd
-from src.model.constants import keep_cols, drop_cols, dataset_csv_path
+from constants import keep_cols, drop_cols, dataset_csv_path, years, random_state, test_size
+from sklearn.model_selection import train_test_split
 import nfl_data_py as nfl
+from numpy.random import RandomState
 import os
+
+rs = RandomState(seed=random_state)
+
 
 
 def partition(data, play_type="pass"):
     return data[data['play_type'] == play_type].drop('play_type', axis=1)
+
+def create_train_test_split(data, test_size=0.2):
+
+    shuffled_indices = rs.permutation(len(data)) # shuffle indices randomly
+
+    test_size = int(len(data) * (test_size)) 
+    test_indices = shuffled_indices[:test_size]
+    train_indices = shuffled_indices[test_size:]
+
+    train = data.iloc[train_indices]
+    test = data.iloc[test_indices]
+
+    return train, test
 
 def import_dataset(years):
     
@@ -56,13 +74,13 @@ def process_raw_dataset_to_csv(raw_dataset):
     df['posteam_total_rush_epa'] = df.apply(align_rush_epa, axis=1)
     df['posteam_total_pass_epa'] = df.apply(align_total_epa, axis=1)
 
-
     df['posteam_epa_per_sec'] = df.apply(lambda row: row['posteam_total_epa'] / (3600 - row['game_seconds_remaining']), axis=1)
     df['posteam_rush_epa_per_sec'] = df.apply(lambda row: row['posteam_total_rush_epa'] / (3600 - row['game_seconds_remaining']), axis=1)
     df['posteam_pass_epa_per_sec'] = df.apply(lambda row: row['posteam_total_pass_epa'] / (3600 - row['game_seconds_remaining']), axis=1)
 
     df.drop(columns=drop_cols, inplace=True)
     df.to_csv(dataset_csv_path)
+    
     return df
 
 def get_dataset(years):
@@ -74,7 +92,8 @@ def get_dataset(years):
         print("Dataset csv not found. Running Download script.")
         dataset = import_dataset(years)
         dataset = process_raw_dataset_to_csv(dataset)
-    return dataset
+    train, test = create_train_test_split(dataset)
+    return train, test
 
 def partition_dataset_by_play_type(dataset):
 
