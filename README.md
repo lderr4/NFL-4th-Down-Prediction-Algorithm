@@ -3,8 +3,6 @@
 ## Description   
 This project combines classification and regression tasks to determine whether a team should run, pass, punt, or kick a field goal on 4th down, emulating the duties of an NFL coach. 
 
-[Python Libraries Used]([https://github.com/lderr4/Robo-NFL-Coach/blob/main/requirements.txt](https://github.com/lderr4/NFL-4th-Down-Prediction-Algorithm/blob/main/containers/nfl-model/requirements.txt))
-
 ## Dataset
 All models are trained on the play-by-play dataset provided by the [nfl-data-py API](https://pypi.org/project/nfl-data-py/). 
 
