@@ -39,6 +39,7 @@ def fetch_model_prediction():
         st.error(f"Error: {response.status_code} - {response.text}")
 
 st.title("NFL 4th Down Prediction Model")
+st.subheader("Check out the source code: \nhttps://github.com/lderr4/NFL-4th-Down-Prediction-Algorithm/blob/main/README.md")
 
 col1, col2 = st.columns([1, 1])  # Adjust proportions as needed (e.g., [1, 2] for unequal columns)
 with col1:
@@ -99,11 +100,12 @@ with col2:
     wpa_preds["WPA Change (%)"] = wpa_preds["WPA Change"] * 100  # Convert to percentage
 
     for _, row in wpa_preds.iterrows():
+
         play_type = row["Play Type"]
         wpa_change = row["WPA Change (%)"]
 
         st.metric(
-            label=COLUMN_NAME_CLEANER[play_type],
+            label=f"Predicted Win Probability after: {COLUMN_NAME_CLEANER[play_type]}",
             value=f"{(current_win_probability + wpa_change / 100) * 100:.2f}%",  # Adjusted win probability
             delta=f"{wpa_change:+.2f}%",
     )

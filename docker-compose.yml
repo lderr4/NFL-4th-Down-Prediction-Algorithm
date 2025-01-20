@@ -4,7 +4,7 @@ services:
   nfl-model:
     build:
       context: ./containers/nfl-model/
-    # command: uvicorn backend:app --host 0.0.0.0 --port 8000 --reload
+    command: uvicorn backend:app --host 0.0.0.0 --port 8000 --reload
     working_dir: /app
     restart: on-failure
     container_name: nfl-model
