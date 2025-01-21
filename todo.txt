@@ -1,0 +1,25 @@
+fast api to quickly serve model backend
+
+
+backend init:  
+uvicorn backend:app --host 0.0.0.0 --port 8000 --reload
+
+ n
+update fetch random row function so that it updates the third value with the new row.
+
+subheader with github link
+
+steps:
+zip -r deployment.zip . -x@.zipignore
+
+
+
+
+
+
+
+
+
+
+
+
