@@ -69,3 +69,5 @@ BAR_CHART_DEFAULTS = {
 
 
 API_URL = "http://nfl-model:8000"
+
+PAGE_TITLE = "4th Down Prediction"

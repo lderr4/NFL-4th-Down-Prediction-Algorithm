@@ -1,6 +1,6 @@
 import streamlit as st
 import requests
-from constants import SLIDER_DEFAULTS, API_URL, COLUMN_NAME_CLEANER, BAR_CHART_DEFAULTS
+from constants import SLIDER_DEFAULTS, API_URL, COLUMN_NAME_CLEANER, BAR_CHART_DEFAULTS, PAGE_TITLE
 from pandas import Series, DataFrame, melt
 import matplotlib.pyplot as plt
 import altair as alt
@@ -9,6 +9,8 @@ if "sliders" not in st.session_state:
     st.session_state.sliders = {key: val[2] for key, val in SLIDER_DEFAULTS.items()}
     st.session_state.bar_chart = BAR_CHART_DEFAULTS
     st.session_state.wpa_dict = {}
+    st.set_page_config(page_title=PAGE_TITLE)
+
 
 
 def fetch_random_row():
@@ -38,7 +40,16 @@ def fetch_model_prediction():
     else:
         st.error(f"Error: {response.status_code} - {response.text}")
 
-st.title("NFL 4th Down Prediction Model")
+st.markdown(
+    """
+    <h1 style="line-height: 1.2;">
+        NFL 4<sup style="font-size: 0.75em; vertical-align: -0.1em;">th</sup> Down Prediction Model
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
+
+
 st.subheader("Check out the source code: \nhttps://github.com/lderr4/NFL-4th-Down-Prediction-Algorithm/blob/main/README.md")
 
 col1, col2 = st.columns([1, 1])  # Adjust proportions as needed (e.g., [1, 2] for unequal columns)
