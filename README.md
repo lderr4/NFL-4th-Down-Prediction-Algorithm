@@ -1,6 +1,6 @@
 # [Link to Deployed Web Application](https://4th-down-prediction.com)
 
-I have deployed my Streamlit frontend and Fastapi backend to an AWS EC2 instance to demonstrate my the models used in this project. Check it out with the link above!  
+I have deployed my Streamlit frontend and Fastapi backend to an AWS EC2 instance to demonstrate the models used in this project. Check it out with the link above!  
 
 # Machine Learning Methodology:
   
